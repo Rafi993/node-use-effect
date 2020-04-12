@@ -4,11 +4,11 @@ const useEffect = require('./useEffect');
 // This has to be object because you can't create proxy of primitive types
 const user = { input: '' };
 
-const proxiedUser = useEffect(() => {
-  if (user.input && parseInt(user.input, 10) % 2 === 0) {
-    console.log('Number is even');
+let proxiedUser = useEffect(() => {
+  if (proxiedUser.input && parseInt(proxiedUser.input, 10) % 2 === 0) {
+    console.log(`${proxiedUser.input} is even`);
   } else {
-    console.log('Number is odd');
+    console.log(`${proxiedUser.input} is odd`);
   }
 }, user);
 
@@ -18,6 +18,6 @@ const rl = readline.createInterface({
 });
 
 rl.question('Enter number? ', (answer) => {
-  proxiedUser.userInput = answer;
+  proxiedUser.input = answer;
   rl.close();
 });
